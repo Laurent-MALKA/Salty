@@ -10,6 +10,7 @@
 #include "Rect.hpp"
 #include "Image.hpp"
 #include "Direction.hpp"
+#include <ctime>
 
 class Espion {
 public:
