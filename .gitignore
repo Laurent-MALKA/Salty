@@ -1,6 +1,5 @@
 
 .idea/
-cmake-build-debug/*
 !/cmake-build-debug/FindSDL2.cmake
 !/cmake-build-debug/FindSDL2_image.cmake
 !/cmake-build-debug/FindSDL2_ttf.cmake
