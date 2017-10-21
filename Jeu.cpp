@@ -10,6 +10,7 @@ Jeu::Jeu() {
     rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     srand(time(NULL));
     initEspion();
+    affichage.init(rend);
 }
 
 Jeu::~Jeu() {

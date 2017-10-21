@@ -12,9 +12,15 @@
 
 class Affichage {
 public:
+    virtual ~Affichage();
+
+    void init(SDL_Renderer *rend);
+
     void display(SDL_Renderer *rend, const std::vector<Espion *> &espions);
 
 private:
+    SDL_Texture *bg;
+
     void afficherBackground(SDL_Renderer *rend);
 
     void afficherPersonnage(SDL_Renderer *rend, const Espion *espion);
