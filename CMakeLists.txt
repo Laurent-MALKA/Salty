@@ -4,6 +4,8 @@ project(Salty)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIR})
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${project_SOURCE_DIR}/cmake")
+
 set(SOURCE_FILES main.cpp Espion.cpp Espion.hpp Rect.cpp Rect.hpp Jeu.cpp Jeu.hpp Joueur.cpp Joueur.hpp IA.cpp IA.hpp Input.cpp Input.hpp Image.cpp Image.hpp Moteur.cpp Moteur.hpp Affichage.cpp Affichage.hpp)
 
 set(CMAKE_CXX_FLAGS "-lSDL2")
