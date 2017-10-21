@@ -26,12 +26,12 @@ void Affichage::afficherBackground(SDL_Renderer *rend) {
 
 void Affichage::afficherPersonnage(SDL_Renderer *rend, const Espion &espion) {
     SDL_Rect rect = {};
-    rect.x = espion.getRect().getX();
-    rect.y = espion.getRect().getY();
-    rect.w = espion.getRect().getW();
-    rect.h = espion.getRect().getH();
+    rect.x = espion.getR().getX();
+    rect.y = espion.getR().getY();
+    rect.w = espion.getR().getW();
+    rect.h = espion.getR().getH();
 
-    SDL_RendererFlip flip = (espion.getDir().getHor() == -1) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
+    SDL_RendererFlip flip = (espion.getDir().getHorizontal() == -1) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE;
 
-    SDL_RenderCopyEx(rend, espion.getImg(), NULL, &rect, 0, NULL, flip);
+    SDL_RenderCopyEx(rend, espion.getImg().getTx(), NULL, &rect, 0, NULL, flip);
 }

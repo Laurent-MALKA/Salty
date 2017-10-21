@@ -6,7 +6,12 @@
 #define SALTY_IA_HPP
 
 
-class IA {
+#include "Espion.hpp"
+
+class IA: public Espion {
+public:
+    IA(const Rect &r, const Image &img);
+    void deplacement();
 
 };
 

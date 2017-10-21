@@ -6,8 +6,43 @@
 #define SALTY_ESPION_HPP
 
 
-class Espion {
+#include <SDL2/SDL_render.h>
+#include "Rect.hpp"
+#include "Image.hpp"
+#include "Direction.hpp"
 
+class Espion {
+public:
+    Espion(const Rect &r, const Image &img);
+
+    void mourir();
+
+    virtual void deplacement() =0;
+
+    const int getV() const;
+
+    const Rect &getR() const;
+
+    const Image &getImg() const;
+
+    void setR(const Rect &r);
+
+    void setImg(const Image &img);
+
+    bool estMort() const;
+
+    const Direction &getDir() const;
+
+    void setMort(bool mort);
+
+    void setDir(const Direction &dir);
+
+protected:
+    const int v;
+    Rect r;
+    Image img;
+    bool mort;
+    Direction dir;
 };
 
 

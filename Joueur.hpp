@@ -6,8 +6,32 @@
 #define SALTY_JOUEUR_HPP
 
 
-class Joueur {
+#include "Espion.hpp"
+#include "Input.hpp"
 
+class Joueur: public Espion {
+public:
+    Joueur(const Rect &r, const Image &img, Input input);
+
+    const int getCdAtq() const;
+
+    const int getCdMax() const;
+
+    int getNbRounds() const;
+
+    void setNbRounds(int nbRounds);
+
+    const Input &getInput() const;
+
+    void setCdAtq(int cdAtq);
+
+    void setInput(const Input &input);
+
+private:
+    int cdAtq;
+    const int cdMax;
+    int nbRounds;
+    Input input;
 };
 
 

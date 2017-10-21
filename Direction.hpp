@@ -10,23 +10,13 @@ class Direction {
 public:
     Direction() : vertical(0), horizontal(0) {}
 
-    void setVer(int ver) {
-        if (ver == -1 || ver == 0 || ver == 1)
-            Direction::vertical = ver;
-    }
+    void setVertical(int ver);
 
-    void setHor(int hor) {
-        if (hor == -1 || hor == 0 || hor == 1)
-            Direction::horizontal = hor;
-    }
+    void setHorizontal(int hor);
 
-    int getVer() const {
-        return vertical;
-    }
+    int getVertical() const;
 
-    int getHor() const {
-        return horizontal;
-    }
+    int getHorizontal() const;
 
 private:
     int vertical;
