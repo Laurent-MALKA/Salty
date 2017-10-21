@@ -2,15 +2,10 @@
 // Created by laurent on 10/21/17.
 //
 
-#include <SDL2/SDL_image.h>
-#include "params.hpp"
 #include "Jeu.hpp"
-#include "Joueur.hpp"
-#include "IA.hpp"
+
 
 Jeu::Jeu() {
-    SDL_Init(SDL_INIT_VIDEO);
-
     window = SDL_CreateWindow("Salty", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, W_WIDTH, W_HEIGHT, 0);
     rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -45,4 +40,20 @@ void Jeu::initEspion() {
     for (int i = 0; i < 15; ++i) {
         espions.push_back(IA(image));
     }
+}
+
+SDL_Window *Jeu::getWindow() const {
+    return window;
+}
+
+void Jeu::setWindow(SDL_Window *window) {
+    Jeu::window = window;
+}
+
+SDL_Renderer *Jeu::getRend() const {
+    return rend;
+}
+
+void Jeu::setRend(SDL_Renderer *rend) {
+    Jeu::rend = rend;
 }
