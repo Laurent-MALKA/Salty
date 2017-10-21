@@ -1,5 +1,4 @@
 
-.idea/
 !/cmake-build-debug/FindSDL2.cmake
 !/cmake-build-debug/FindSDL2_image.cmake
 !/cmake-build-debug/FindSDL2_ttf.cmake
@@ -37,14 +36,3 @@
 *.exe
 *.out
 *.app
-### CMake template
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
-compile_commands.json
-CTestTestfile.cmake
-
