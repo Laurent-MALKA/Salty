@@ -1,7 +1,4 @@
 
-!/cmake-build-debug/FindSDL2.cmake
-!/cmake-build-debug/FindSDL2_image.cmake
-!/cmake-build-debug/FindSDL2_ttf.cmake
 
 ### C++ template
 # Prerequisites
