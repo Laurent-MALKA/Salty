@@ -16,7 +16,7 @@
 #include "params.hpp"
 #include "Joueur.hpp"
 #include "IA.hpp"
-
+#include "Moteur.hpp"
 
 class Jeu {
 public:

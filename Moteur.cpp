@@ -2,6 +2,7 @@
 // Created by laurent on 10/21/17.
 //
 
+#include <vector>
 #include "Joueur.hpp"
 #include "Clavier.hpp"
 #include "Moteur.hpp"
@@ -26,5 +27,14 @@ void Moteur::lecture(Joueur &j, const Clavier &keyboard) {
     if (!j.getCdAtq() && keyboard.isStillPressed(j.getInput().getAttaque())) {
         j.setCdAtq(j.getCdMax());
     }
+
+}
+void Moteur::deplacements(std::vector<Espion> espions) {
+    for(int i=0; i<espions.size(); i++){
+        espions[i].deplacement();
+    }
+}
+
+void Moteur::tesTouche(std::vector<Espion> espions) {
 
 }
