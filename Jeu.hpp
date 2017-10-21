@@ -9,6 +9,8 @@
 #include <vector>
 #include <SDL2/SDL.h>
 #include "Espion.hpp"
+#include "Clavier.hpp"
+#include "Affichage.hpp"
 
 class Jeu {
 public:
@@ -16,11 +18,19 @@ public:
 
     virtual ~Jeu();
 
+    void gameLoop();
+
+    void initEspion();
+
 private:
     SDL_Window *window;
     SDL_Renderer *rend;
 
+    Affichage affichage;
+
     std::vector<Espion> espions;
+
+    Clavier keyboard;
 };
 
 

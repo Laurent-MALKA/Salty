@@ -2,9 +2,9 @@
 
 int main() {
 
-    Jeu jeu();
+    Jeu jeu;
 
-    SDL_Delay(3000);
+    jeu.gameLoop();
 
     return 0;
 }

@@ -18,6 +18,30 @@ void Espion::mourir(){
     //Animation mort
 }
 
+void Espion::deplacement(){
+    int newX=Espion::dir.getHorizontal()*Espion::v+Espion::r.getX();
+    int newY=Espion::dir.getVertical()*Espion::v+Espion::r.getY();;
+    int pW=Espion::r.getW();
+    int pH=Espion::r.getH();
+
+    if(newX<0){
+        newX=0;
+    }
+    else if(newX>W_WIDTH-pW){
+        newX=W_WIDTH-pW;
+    }
+
+    if(newY<0){
+        newY=0;
+    }
+    else if(newY>W_HEIGHT-pH){
+        newY=W_WIDTH-pH;
+    }
+
+    Espion::r.setX(newX);
+    Espion::r.setY(newY);
+}
+
 bool Espion::estMort() const {
     return mort;
 }

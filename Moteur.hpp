@@ -6,7 +6,14 @@
 #define SALTY_MOTEUR_HPP
 
 
+#include "Joueur.hpp"
+#include "Clavier.hpp"
+
 class Moteur {
+public:
+    static void lecture(Joueur &j1, Joueur &j2, const Clavier &keyboard);
+
+private:
 
 };
 

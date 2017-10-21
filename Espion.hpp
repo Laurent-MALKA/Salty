@@ -17,7 +17,7 @@ public:
 
     void mourir();
 
-    virtual void deplacement() =0;
+    void deplacement();
 
     const int getV() const;
 
