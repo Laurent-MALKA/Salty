@@ -4,10 +4,11 @@
 
 #include "IA.hpp"
 
-IA::IA(const Rect &r, const Image &img) : Espion(r, img) {
+IA::IA(const Image &img) : Espion(img) {
 
 }
 
 void IA::deplacement(){
+    srand(time(NULL));
 
 }

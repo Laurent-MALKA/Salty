@@ -10,7 +10,7 @@
 
 class IA: public Espion {
 public:
-    IA(const Rect &r, const Image &img);
+    IA(const Image &img);
     void deplacement();
 
 };

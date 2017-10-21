@@ -5,7 +5,7 @@
 
 #include "Joueur.hpp"
 
-Joueur::Joueur(Image img, Input input) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img){
+Joueur::Joueur(const Image img, const Input input) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img){
 }
 
 const Input &Joueur::getInput() const {

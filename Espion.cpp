@@ -5,7 +5,7 @@
 #include "Espion.hpp"
 #include "params.hpp"
 
-Espion::Espion(Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false) {
+Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false) {
 
     srand (time(NULL));
     Espion::r.setX(rand()%W_WIDTH);
