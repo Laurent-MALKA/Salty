@@ -27,6 +27,8 @@ public:
 
     void setInput(const Input &input);
 
+    void deplacement();
+
 private:
     int cdAtq;
     const int cdMax;

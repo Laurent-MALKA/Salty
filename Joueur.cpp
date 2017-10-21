@@ -8,6 +8,27 @@
 Joueur::Joueur(const Image img, const Input input) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img){
 }
 
+void Joueur::deplacement(){
+    if(cdAtq==0) {
+        Espion::deplacement();
+        if(dir.getHorizontal()==1){
+            //Animation marche vers droite
+        }
+        else if(dir.getHorizontal()==-1){
+            //Animation marhce vers gauche
+        }
+        else{
+            //Animation idle
+        }
+    }
+    else {
+        if (cdAtq == cdMax) {
+            //Animation attaque
+        }
+        cdAtq--;
+    }
+}
+
 const Input &Joueur::getInput() const {
     return input;
 }
