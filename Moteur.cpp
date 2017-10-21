@@ -35,6 +35,6 @@ void Moteur::deplacements(std::vector<Espion> espions) {
     }
 }
 
-void Moteur::tesTouche(std::vector<Espion> espions) {
+void Moteur::testTouche(std::vector<Espion> espions) {
 
 }
