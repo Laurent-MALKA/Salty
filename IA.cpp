@@ -8,6 +8,6 @@ IA::IA(const Rect &r, const Image &img) : Espion(r, img) {
 
 }
 
-void deplacement(){
+void IA::deplacement(){
 
 }
