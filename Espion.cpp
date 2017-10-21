@@ -34,7 +34,7 @@ void Espion::deplacement(){
         newY=0;
     }
     else if(newY>W_HEIGHT-pH){
-        newY=W_WIDTH-pH;
+        newY=W_HEIGHT-pH;
     }
 
     Espion::r.setX(newX);
