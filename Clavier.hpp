@@ -7,6 +7,7 @@
 
 
 #include <SDL2/SDL_quit.h>
+#include "SDL2/SDL_scancode.h"
 
 class Clavier {
 public:

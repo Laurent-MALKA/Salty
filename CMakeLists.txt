@@ -8,7 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${project_SOURCE_DIR}/cmake")
 
 set(SOURCE_FILES main.cpp Espion.cpp Espion.hpp Rect.cpp Rect.hpp Jeu.cpp Jeu.hpp Joueur.cpp Joueur.hpp IA.cpp IA.hpp Input.cpp Input.hpp Image.cpp Image.hpp Moteur.cpp Moteur.hpp Affichage.cpp Affichage.hpp Direction.cpp Direction.hpp params.hpp Clavier.cpp Clavier.hpp)
 
-set(CMAKE_CXX_FLAGS "-lSDL2")
+set(CMAKE_CXX_FLAGS "-lSDL2 -lSDL2_ttf -lSDL2_image")
 
 add_executable(Salty ${SOURCE_FILES})
 target_link_libraries(Salty ${SDL2_LIBRARY})

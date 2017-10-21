@@ -23,9 +23,9 @@ Jeu::~Jeu() {
 }
 
 void Jeu::gameLoop() {
-    keyboard.update();
 
     while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE)) {
+        keyboard.update();
         affichage.display(rend, espions);
     }
 }
