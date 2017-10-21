@@ -30,11 +30,7 @@ public:
 
     SDL_Window *getWindow() const;
 
-    void setWindow(SDL_Window *window);
-
     SDL_Renderer *getRend() const;
-
-    void setRend(SDL_Renderer *rend);
 
 private:
     SDL_Window *window;

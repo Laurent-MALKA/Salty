@@ -33,17 +33,18 @@ void Jeu::gameLoop() {
 }
 
 void Jeu::initEspion() {
-    SDL_Surface *surface = IMG_Load("../espion.png");
+    SDL_Surface *surface = IMG_Load("../img/espion.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, surface);
     SDL_FreeSurface(surface);
 
     Image image(texture);
 
     espions.push_back(
-            new Joueur(image, Input(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_E)));
+            new Joueur(image, Input(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_D, SDL_SCANCODE_A, SDL_SCANCODE_E)));
     espions.push_back(
-            new Joueur(image, Input(SDL_SCANCODE_8, SDL_SCANCODE_5, SDL_SCANCODE_4, SDL_SCANCODE_6, SDL_SCANCODE_9)));
-    for (int i = 0; i < 15; ++i) {
+            new Joueur(image,
+                       Input(SDL_SCANCODE_O, SDL_SCANCODE_L, SDL_SCANCODE_SEMICOLON, SDL_SCANCODE_K, SDL_SCANCODE_P)));
+    for (int i = 0; i < 20; ++i) {
         espions.push_back(new IA(image));
     }
 }
@@ -52,14 +53,6 @@ SDL_Window *Jeu::getWindow() const {
     return window;
 }
 
-void Jeu::setWindow(SDL_Window *window) {
-    Jeu::window = window;
-}
-
 SDL_Renderer *Jeu::getRend() const {
     return rend;
-}
-
-void Jeu::setRend(SDL_Renderer *rend) {
-    Jeu::rend = rend;
 }

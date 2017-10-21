@@ -8,7 +8,7 @@
 #include "Moteur.hpp"
 
 void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
-    if (keyboard.isStillPressed(j->getInput().getDroite()) && j->getInput().getGauche()) {
+    if (keyboard.isStillPressed(j->getInput().getDroite()) && keyboard.isStillPressed(j->getInput().getGauche())) {
         j->setDirHorizontal(0);
     } else if (keyboard.isStillPressed(j->getInput().getDroite())) {
         j->setDirHorizontal(1);
@@ -18,12 +18,12 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
         j->setDirHorizontal(0);
     }
 
-    if (keyboard.isStillPressed(j->getInput().getHaut()) && j->getInput().getBas()) {
+    if (keyboard.isStillPressed(j->getInput().getHaut()) && keyboard.isStillPressed(j->getInput().getBas())) {
         j->setDirVertical(0);
     } else if (keyboard.isStillPressed(j->getInput().getHaut())) {
-        j->setDirVertical(1);
-    } else if (keyboard.isStillPressed(j->getInput().getBas())) {
         j->setDirVertical(-1);
+    } else if (keyboard.isStillPressed(j->getInput().getBas())) {
+        j->setDirVertical(1);
     } else {
         j->setDirVertical(0);
     }
