@@ -6,8 +6,17 @@
 #define SALTY_AFFICHAGE_HPP
 
 
-class Affichage {
+#include <vector>
+#include "Espion.hpp"
 
+class Affichage {
+public:
+    void display(SDL_Renderer *rend, const std::vector<Espion> &espions);
+
+private:
+    void afficherBackground(SDL_Renderer *rend);
+
+    void afficherPersonnage(SDL_Renderer *rend, const Espion &espion);
 };
 
 

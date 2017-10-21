@@ -6,8 +6,21 @@
 #define SALTY_JEU_HPP
 
 
-class Jeu {
+#include <vector>
+#include <SDL2/SDL.h>
+#include "Espion.hpp"
 
+class Jeu {
+public:
+    Jeu();
+
+    virtual ~Jeu();
+
+private:
+    SDL_Window *window;
+    SDL_Renderer *rend;
+
+    std::vector<Espion> espions;
 };
 
 
