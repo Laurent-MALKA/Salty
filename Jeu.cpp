@@ -27,11 +27,12 @@ void Jeu::gameLoop() {
     while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE)) {
         keyboard.update();
         affichage.display(rend, espions);
+        SDL_Delay(16);
     }
 }
 
 void Jeu::initEspion() {
-    SDL_Surface *surface = IMG_Load("espion.png");
+    SDL_Surface *surface = IMG_Load("../espion.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, surface);
     SDL_FreeSurface(surface);
 
