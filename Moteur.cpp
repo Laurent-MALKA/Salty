@@ -28,8 +28,8 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
         j->setDirVertical(0);
     }
 
-    if (!j->getCdAtq() && keyboard.isStillPressed(j->getInput().getAttaque())) {
-        j->setCdAtq(j->getCdMax());
+    if (j->getArme().estSortie() && keyboard.isStillPressed(j->getInput().getAttaque())) {
+        j->attaque();
     }
 
 }
@@ -41,5 +41,21 @@ void Moteur::deplacements(std::vector<Espion *> espions) {
 }
 
 void Moteur::testTouche(std::vector<Espion *> espions) {
+    Joueur * jAct;
 
+    for(int i=0; i<2; i++){
+        jAct=(Joueur *) espions[i];
+        if(jAct->getCdAtq()!=0){
+            for(int j=0; j<espions.size(); j++){
+                if((jAct->getR().getX() >=  espions[j]->getR().getX() && jAct->getR().getX()<=espions[j]->getR().getX()+espions[j]->getR().getW()
+                        || jAct->getR().getX()<=espions[j]->getR().getX() && jAct->getR().getX()+jAct->getR().getW()>=espions[j]->getR().getX())
+                   &&
+                   (jAct->getR().getY()>=espions[j]->getR().getY() && jAct->getR().getY()<=espions[j]->getR().getY()+espions[j]->getR().getH()
+                        || jAct->getR().getY()<=espions[j]->getR().getY() && jAct->getR().getY()+jAct->getR().getH()>=espions[j]->getR().getY()))
+                {
+                    espions[j]->mourir();
+                }
+            }
+        }
+    }
 }

@@ -14,6 +14,7 @@ Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false)
 }
 
 void Espion::mourir(){
+    mort=true;
     //Animation mort
 }
 

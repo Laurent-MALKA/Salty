@@ -8,10 +8,11 @@
 
 #include "Espion.hpp"
 #include "Input.hpp"
+#include "Arme.hpp"
 
 class Joueur: public Espion {
 public:
-    Joueur(Image img, Input input);
+    Joueur(Image img, Input input, Arme arme);
 
     const int getCdAtq() const;
 
@@ -29,11 +30,18 @@ public:
 
     void deplacement();
 
+    void attaque();
+
+    const Arme &getArme() const;
+
+    void setArme(const Arme &arme);
+
 private:
     int cdAtq;
     const int cdMax;
     int nbRounds;
     Input input;
+    Arme arme;
 };
 
 
