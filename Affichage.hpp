@@ -8,15 +8,16 @@
 
 #include <vector>
 #include "Espion.hpp"
+#include "Joueur.hpp"
 
 class Affichage {
 public:
-    void display(SDL_Renderer *rend, const std::vector<Espion> &espions);
+    void display(SDL_Renderer *rend, const std::vector<Espion *> &espions);
 
 private:
     void afficherBackground(SDL_Renderer *rend);
 
-    void afficherPersonnage(SDL_Renderer *rend, const Espion &espion);
+    void afficherPersonnage(SDL_Renderer *rend, const Espion *espion);
 };
 
 

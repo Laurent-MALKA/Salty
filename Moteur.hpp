@@ -11,9 +11,11 @@
 
 class Moteur {
 public:
-    static void lecture(Joueur &j, const Clavier &keyboard);
-    static void deplacements(std::vector<Espion> espions);
-    static void testTouche(std::vector<Espion> espions);
+    static void lecture(Joueur *j, const Clavier &keyboard);
+
+    static void deplacements(std::vector<Espion *> espions);
+
+    static void testTouche(std::vector<Espion *> espions);
 };
 
 

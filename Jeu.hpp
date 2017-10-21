@@ -42,7 +42,7 @@ private:
 
     Affichage affichage;
 
-    std::vector<Espion> espions;
+    std::vector<Espion *> espions;
 
     Clavier keyboard;
 };
