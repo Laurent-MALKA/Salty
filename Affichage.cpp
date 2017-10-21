@@ -8,7 +8,7 @@
 #include "Affichage.hpp"
 
 void Affichage::display(SDL_Renderer *rend, const std::vector<Espion> &espions) {
-    SDL_SetRenderDrawColor(rend, 0, 0, 0, 0);
+    SDL_SetRenderDrawColor(rend, 255, 255, 255, 0);
     SDL_RenderClear(rend);
 
 

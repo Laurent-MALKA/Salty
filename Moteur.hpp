@@ -11,9 +11,7 @@
 
 class Moteur {
 public:
-    static void lecture(Joueur &j1, Joueur &j2, const Clavier &keyboard);
-
-private:
+    static void lecture(Joueur &j, const Clavier &keyboard);
 
 };
 
