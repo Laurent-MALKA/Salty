@@ -33,25 +33,25 @@ void Jeu::gameLoop() {
 }
 
 void Jeu::initEspion() {
-    SDL_Surface *surface = IMG_Load("../espion.png");
+    SDL_Surface *surface = IMG_Load("../img/espion.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, surface);
-    SDL_Surface* s2=IMG_Load("../arme.png");
+    SDL_Surface* s2=IMG_Load("../img/arme.png");
     SDL_Texture* t2=SDL_CreateTextureFromSurface(rend, s2);
 
     SDL_FreeSurface(surface);
     SDL_FreeSurface(s2);
-
-
 
     Image image(texture);
     Image image2(t2);
     Arme arme(image2);
 
     espions.push_back(
-            new Joueur(image, Input(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_A, SDL_SCANCODE_D, SDL_SCANCODE_E), arme));
+            new Joueur(image, Input(SDL_SCANCODE_W, SDL_SCANCODE_S, SDL_SCANCODE_D, SDL_SCANCODE_A, SDL_SCANCODE_E), arme));
     espions.push_back(
-            new Joueur(image, Input(SDL_SCANCODE_8, SDL_SCANCODE_5, SDL_SCANCODE_4, SDL_SCANCODE_6, SDL_SCANCODE_9), arme));
-    for (int i = 0; i < 15; ++i) {
+            new Joueur(image, Input(SDL_SCANCODE_O, SDL_SCANCODE_L, SDL_SCANCODE_SEMICOLON, SDL_SCANCODE_K, SDL_SCANCODE_P), arme));
+
+    for (int i = 0; i < 20; ++i) {
+
         espions.push_back(new IA(image));
     }
 }
@@ -60,14 +60,6 @@ SDL_Window *Jeu::getWindow() const {
     return window;
 }
 
-void Jeu::setWindow(SDL_Window *window) {
-    Jeu::window = window;
-}
-
 SDL_Renderer *Jeu::getRend() const {
     return rend;
-}
-
-void Jeu::setRend(SDL_Renderer *rend) {
-    Jeu::rend = rend;
 }
