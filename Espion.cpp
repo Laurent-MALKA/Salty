@@ -7,10 +7,10 @@
 
 Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false) {
 
-    Espion::r.setX(rand()%W_WIDTH);
-    Espion::r.setY(rand()%W_HEIGHT);
     Espion::r.setW(50);
     Espion::r.setH(75);
+    Espion::r.setX(rand()%(W_WIDTH-r.getW()));
+    Espion::r.setY(rand()%(W_HEIGHT-r.getH()));
 }
 
 void Espion::mourir(){

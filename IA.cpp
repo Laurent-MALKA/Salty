@@ -9,11 +9,10 @@ IA::IA(const Image &img) : Espion(img), frame(0) {
 
 void IA::deplacement(){
     int r;
-    srand(time(NULL));
 
     if(frame%60==0){
         r=rand()%3;
-        if(r==1){
+        if(r>=1){
             r=rand()%3-1;
             IA::dir.setHorizontal(r);
             r=rand()%3-1;
