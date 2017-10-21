@@ -3,9 +3,15 @@
 //
 
 #include "Espion.hpp"
+#include "params.hpp"
 
-Espion::Espion(const Rect &r, const Image &img) : r(r), img(img), dir(), mort(false), v(5) {
+Espion::Espion(Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false) {
 
+    srand (time(NULL));
+    Espion::r.setX(rand()%W_WIDTH);
+    Espion::r.setY(rand()%W_HEIGHT);
+    Espion::r.setW(50);
+    Espion::r.setY(75);
 }
 
 void Espion::mourir(){
@@ -37,7 +43,7 @@ void Espion::setR(const Rect &r) {
 }
 
 void Espion::setImg(const Image &img) {
-                    Espion::img = img;
+    Espion::img = img;
 }
 
 void Espion::setMort(bool estMort) {

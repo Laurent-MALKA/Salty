@@ -13,7 +13,7 @@
 
 class Espion {
 public:
-    Espion(const Rect &r, const Image &img);
+    Espion(Image img);
 
     void mourir();
 

@@ -5,11 +5,7 @@
 
 #include "Joueur.hpp"
 
-Joueur::Joueur(const Rect &r, const Image &img, int id, Input input) : Espion(r, img), cdMax(100) {
-    Joueur::cdAtq=0;
-    Joueur::nbRounds=0;
-    Joueur::input=input;
-    Joueur::id=id;
+Joueur::Joueur(Image img, Input input) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img){
 }
 
 const Input &Joueur::getInput() const {

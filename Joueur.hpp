@@ -11,7 +11,7 @@
 
 class Joueur: public Espion {
 public:
-    Joueur(const Rect &r, const Image &img, int id, Input input);
+    Joueur(Image img, Input input);
 
     const int getCdAtq() const;
 
@@ -32,7 +32,6 @@ private:
     const int cdMax;
     int nbRounds;
     Input input;
-    int id;
 };
 
 
