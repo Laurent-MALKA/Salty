@@ -18,7 +18,7 @@ public:
 
     void mourir();
 
-    void deplacement();
+    virtual void deplacement();
 
     const int getV() const;
 
@@ -37,6 +37,10 @@ public:
     void setMort(bool mort);
 
     void setDir(const Direction &dir);
+
+    void setDirHorizontal(int horizontal);
+
+    void setDirVertical(int vertical);
 
 protected:
     const int v;

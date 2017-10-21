@@ -77,3 +77,11 @@ void Espion::setMort(bool estMort) {
 void Espion::setDir(const Direction &dir) {
     Espion::dir = dir;
 }
+
+void Espion::setDirHorizontal(int horizontal) {
+    dir.setHorizontal(horizontal);
+}
+
+void Espion::setDirVertical(int vertical) {
+    dir.setVertical(vertical);
+}
