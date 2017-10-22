@@ -4,14 +4,14 @@
 
 #include "IA.hpp"
 
-IA::IA(Image *img) : Espion(img) {
+IA::IA(Image *img) : Espion(img), cptFrame(0) {
 }
 
 void IA::deplacement(){
     int random;
 
     random=rand()%3;
-    if(random==0 && frame%20==0){
+    if(random==0 && cptFrame%20==0){
         random = rand() % 4 - 1;
 
         if (Espion::r.getX() <= 102) {
@@ -44,4 +44,6 @@ void IA::deplacement(){
 
         IA::dir.setVertical(random);
     }
+
+    cptFrame=(cptFrame+1)%9999;
 }

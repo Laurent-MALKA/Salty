@@ -43,7 +43,7 @@ public:
     void animationSuivante();
 
 protected:
-    int frame;
+    int cptFrame;
     int indiceAnimation;
     const int v;
     Rect r;

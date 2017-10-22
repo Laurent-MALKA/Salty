@@ -12,6 +12,9 @@ class IA: public Espion {
 public:
     IA(Image *img);
     void deplacement();
+
+private:
+    int cptFrame;
 };
 
 

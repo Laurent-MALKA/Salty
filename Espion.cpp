@@ -5,7 +5,7 @@
 #include "Espion.hpp"
 #include "params.hpp"
 
-Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0), frame(0) {
+Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0), cptFrame(0) {
 
     Espion::r.setW(50);
     Espion::r.setH(75);
@@ -87,9 +87,9 @@ SDL_Texture *Espion::getTexture() const {
 }
 
 void Espion::animationSuivante() {
-    ++frame;
-    if (frame > 10 && (dir.getVertical() || dir.getHorizontal())) {
-        frame = 0;
+    ++cptFrame;
+    if (cptFrame > 10 && (dir.getVertical() || dir.getHorizontal())) {
+        cptFrame = 0;
         indiceAnimation = 1 - indiceAnimation;
     }
 }
