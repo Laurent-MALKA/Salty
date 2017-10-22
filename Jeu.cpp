@@ -114,6 +114,9 @@ void Jeu::resetEspions(Joueur* j1, Joueur* j2){
     j1->setArmeSortie(false);
     j2->setArmeSortie(false);
 
+    j1->setCdAtq(0);
+    j2->setCdAtq(0);
+
     for(int i=0; i<espions.size(); i++){
         espions[i]->setMort(false);
         espions[i]->randomRect();
