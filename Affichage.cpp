@@ -105,27 +105,19 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int
                          &point, espion->getArme().getFlip());
     }
 
-    if(espion->getNbRounds()>0){
-        rond1=rond_vert;
-        if(espion->getNbRounds()>1){
-            rond2=rond_vert;
-        }
-        else{
-            rond2=rond_rouge;
-        }
-    }
-    else{
-        rond1=rond_rouge;
+    rond1 = rond_rouge;
+    rond2 = rond_rouge;
+
+    if (espion->getNbRounds() == 1)
+        rond1 = rond_vert;
+    else if (espion->getNbRounds() == 2) {
+        rond1 = rond_vert;
+        rond2 = rond_vert;
     }
 
     SDL_RenderCopy(rend, nom, NULL, &rect1);
     SDL_RenderCopy(rend, rond1, NULL, &rect2);
     SDL_RenderCopy(rend, rond2, NULL, &rect3);
-
-    SDL_DestroyTexture(nom);
-    SDL_DestroyTexture(rond1);
-    SDL_DestroyTexture(rond2);
-
 }
 
 Affichage::~Affichage() {
