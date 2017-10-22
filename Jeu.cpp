@@ -28,8 +28,6 @@ void Jeu::gameLoop() {
 
         affichage.displayBackgroundOnly(rend);
 
-        SDL_Delay(2000);
-
         while(keyboard.isKeyboardReleased()){
             keyboard.update();
         }
@@ -38,10 +36,11 @@ void Jeu::gameLoop() {
 
         while(keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2){
 
-            while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2 && (!espions[0]->estMort() && !espions[1]->estMort())) {
+            while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2 && (!j1->estMort() && !j1->estMort())) {
                 keyboard.update();
-                for (int i = 0; i < 2; i++)
-                    Moteur::lecture(dynamic_cast<Joueur *>(espions[i]), keyboard);
+
+                Moteur::lecture(j1, keyboard);
+                Moteur::lecture(j2, keyboard);
 
                 Moteur::deplacements(espions);
                 Moteur::testTouche(espions);
@@ -49,13 +48,20 @@ void Jeu::gameLoop() {
                 affichage.display(rend, espions);
                 SDL_Delay(16);
             }
-
+            if(j1->estMort()){
+                j2->setNbRounds(j2->getNbRounds()+1);
+            }
+            else if(j2->estMort()){
+                j1->setNbRounds(j1->getNbRounds()+1);
+            }
             resetEspions(j1, j2);
-
         }
 
+        SDL_Delay(2000);
         affichage.changerBackground(rend, "../img/ecran_titre.png");
-        initEspion();
+        j1->setNbRounds(0);
+        j2->setNbRounds(0);
+
     }
 }
 
