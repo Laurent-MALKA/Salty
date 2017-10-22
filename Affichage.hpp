@@ -31,6 +31,8 @@ public:
 
     void changerBackground(SDL_Renderer*, std::string path);
 
+    void displayBackgroundOnly(SDL_Renderer *rend);
+
 private:
     SDL_Texture* bg;
     SDL_Texture* nomJ1;

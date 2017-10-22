@@ -26,8 +26,10 @@ void Jeu::gameLoop() {
         j1= (Joueur*) espions[0];
         j2= (Joueur*) espions[1];
 
-        while(keyboard.isKeyboardReleased()){
+        affichage.displayBackgroundOnly(rend);
 
+        while(keyboard.isKeyboardReleased()){
+            keyboard.update();
         }
 
         affichage.changerBackground(rend, "../img/grass.jpg");

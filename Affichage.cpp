@@ -10,7 +10,7 @@ void Affichage::init(SDL_Renderer *rend) {
     TTF_Font* font;
     SDL_Color color={0,0,0,0};
 
-    font=TTF_OpenFont("font/Roboto-Regular.ttf", 20);
+    font = TTF_OpenFont("../font/Roboto-Regular.ttf", 20);
     bg = SDL_CreateTextureFromSurface(rend, surface);
 
     s=TTF_RenderText_Solid(font, "Joueur1 :", color);
@@ -148,6 +148,15 @@ SDL_Texture *Affichage::getBg() const {
 
 void Affichage::setBg(SDL_Texture *bg) {
     Affichage::bg = bg;
+}
+
+void Affichage::displayBackgroundOnly(SDL_Renderer *rend) {
+    SDL_SetRenderDrawColor(rend, 0, 0, 0, 0);
+    SDL_RenderClear(rend);
+
+    SDL_RenderCopy(rend, bg, NULL, NULL);
+
+    SDL_RenderPresent(rend);
 }
 
 
