@@ -20,8 +20,8 @@ void Affichage::init(SDL_Renderer *rend) {
     s2=TTF_RenderText_Solid(font, "Joueur2 :", color);
     nomJ2=SDL_CreateTextureFromSurface(rend, s2);
 
-    rond_rouge=SDL_CreateTextureFromSurface(rend, IMG_Load("rond_rouge.png"));
-    rond_vert=SDL_CreateTextureFromSurface(rend, IMG_Load("rond_vert.png"));
+    rond_rouge = SDL_CreateTextureFromSurface(rend, IMG_Load("../img/rond_rouge.png"));
+    rond_vert = SDL_CreateTextureFromSurface(rend, IMG_Load("../img/rond_vert.png"));
 
     SDL_FreeSurface(s);
     SDL_FreeSurface(surface);
