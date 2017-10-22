@@ -8,40 +8,40 @@ IA::IA(Image *img) : Espion(img) {
 }
 
 void IA::deplacement(){
-    int rand;
+    int random;
 
-    rand=rand()%3;
-    if(rand==0 && frame%20==0){
-        rand = rand() % 4 - 1;
+    random=rand()%3;
+    if(random==0 && frame%20==0){
+        random = rand() % 4 - 1;
 
         if (Espion::r.getX() <= 102) {
-            if (rand == 2) {
-                rand = 1;
+            if (random == 2) {
+                random = 1;
             }
         } else if (Espion::r.getX() + Espion::r.getW() >= W_WIDTH - 102) {
-            if (rand == 2) {
-                rand = -1;
+            if (random == 2) {
+                random = -1;
             }
         } else {
-            rand = rand() % 3 - 1;
+            random = rand() % 3 - 1;
         }
 
-        IA::dir.setHorizontal(rand);
+        IA::dir.setHorizontal(random);
 
-        rand = rand() % 4 - 1;
+        random = rand() % 4 - 1;
 
         if (Espion::r.getY() <= 102) {
-            if (rand == 2) {
-                rand = 1;
+            if (random == 2) {
+                random = 1;
             }
         } else if (Espion::r.getY() + Espion::r.getH() >= W_HEIGHT - 102) {
-            if (rand == 2) {
-                rand = -1;
+            if (random == 2) {
+                random = -1;
             }
         } else {
-            rand = rand() % 3 - 1;
+            random = rand() % 3 - 1;
         }
 
-        IA::dir.setVertical(rand);
+        IA::dir.setVertical(random);
     }
 }
