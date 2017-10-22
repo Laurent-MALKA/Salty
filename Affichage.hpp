@@ -24,6 +24,9 @@ private:
     void afficherBackground(SDL_Renderer *rend);
 
     void afficherPersonnage(SDL_Renderer *rend, const Espion *espion);
+
+    void afficherPersonnage(SDL_Renderer *rend, const Joueur *espion);
+
 };
 
 

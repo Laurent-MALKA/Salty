@@ -3,18 +3,19 @@
 //
 
 #include "Arme.hpp"
-#include "Rect.hpp"
 
-Arme::Arme(const Image &img) : img(img), r(0,0,15,30)  {
+Arme::Arme(const Image &img) : img(img), r(0, 0, 50, 15) {
     sortie=false;
+    angle = 0;
 }
 
 const Rect &Arme::getR() const {
     return r;
 }
 
-void Arme::setR(const Rect &r) {
-    Arme::r = r;
+void Arme::setPos(int x, int y) {
+    r.setX(x);
+    r.setY(y);
 }
 
 const Image &Arme::getImg() const {
@@ -31,4 +32,20 @@ bool Arme::estSortie() const {
 
 void Arme::setSortie(bool sortie) {
     Arme::sortie = sortie;
+}
+
+double Arme::getAngle() const {
+    return angle;
+}
+
+void Arme::setAngle(double angle) {
+    Arme::angle = fmod(angle, 360);
+}
+
+SDL_RendererFlip Arme::getFlip() const {
+    return flip;
+}
+
+void Arme::setFlip(SDL_RendererFlip flip) {
+    Arme::flip = flip;
 }

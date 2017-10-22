@@ -15,7 +15,7 @@ public:
 
     const Rect &getR() const;
 
-    void setR(const Rect &r);
+    void setPos(int x, int y);
 
     const Image &getImg() const;
 
@@ -25,10 +25,21 @@ public:
 
     bool estSortie() const;
 
+    double getAngle() const;
+
+    void setAngle(double angle);
+
+    SDL_RendererFlip getFlip() const;
+
+    void setFlip(SDL_RendererFlip flip);
+
 private:
     Rect r;
     Image img;
     bool sortie;
+    double angle;
+    SDL_RendererFlip flip;
+
 };
 
 

@@ -13,9 +13,12 @@ Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false)
     Espion::r.setY(rand()%(W_HEIGHT-r.getH()));
 }
 
-void Espion::mourir(){
+void Espion::mourir(const Image &img) {
     mort=true;
-    //Animation mort
+    Espion::img = img;
+    int t = r.getW();
+    r.setW(r.getH());
+    r.setH(t);
 }
 
 void Espion::deplacement(){

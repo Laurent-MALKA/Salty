@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <SDL2/SDL_image.h>
 #include "Joueur.hpp"
 #include "Clavier.hpp"
 #include "Moteur.hpp"
@@ -28,7 +29,7 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
         j->setDirVertical(0);
     }
 
-    if (j->getArme().estSortie() && keyboard.isStillPressed(j->getInput().getAttaque())) {
+    if (!j->getArme().estSortie() && keyboard.isStillPressed(j->getInput().getAttaque())) {
         j->attaque();
     }
 
@@ -36,24 +37,29 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
 
 void Moteur::deplacements(std::vector<Espion *> espions) {
     for(int i=0; i<espions.size(); i++){
-        espions[i]->deplacement();
+        if (!espions[i]->estMort())
+            espions[i]->deplacement();
     }
 }
 
-void Moteur::testTouche(std::vector<Espion *> espions) {
+void Moteur::testTouche(std::vector<Espion *> espions, Image mort) {
     Joueur * jAct;
 
     for(int i=0; i<2; i++){
         jAct=(Joueur *) espions[i];
         if(jAct->getCdAtq()!=0){
             for(int j=0; j<espions.size(); j++){
-                if((jAct->getR().getX() >=  espions[j]->getR().getX() && jAct->getR().getX()<=espions[j]->getR().getX()+espions[j]->getR().getW()
+                if (i != j && !espions[j]->estMort()
+                    &&
+                    (jAct->getR().getX() >= espions[j]->getR().getX() &&
+                     jAct->getR().getX() <= espions[j]->getR().getX() + espions[j]->getR().getW()
                         || jAct->getR().getX()<=espions[j]->getR().getX() && jAct->getR().getX()+jAct->getR().getW()>=espions[j]->getR().getX())
-                   &&
-                   (jAct->getR().getY()>=espions[j]->getR().getY() && jAct->getR().getY()<=espions[j]->getR().getY()+espions[j]->getR().getH()
+                    &&
+                    (jAct->getR().getY() >= espions[j]->getR().getY() &&
+                     jAct->getR().getY() <= espions[j]->getR().getY() + espions[j]->getR().getH()
                         || jAct->getR().getY()<=espions[j]->getR().getY() && jAct->getR().getY()+jAct->getR().getH()>=espions[j]->getR().getY()))
                 {
-                    espions[j]->mourir();
+                    espions[j]->mourir(mort);
                 }
             }
         }

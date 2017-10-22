@@ -33,40 +33,48 @@ void Joueur::deplacement(){
 }
 
 void Joueur::attaque(){
+    cdAtq = cdMax;
     int xWeapon;
     int yWeapon;
-    int wWeapon;
-    int hWeapon;
 
-    if(dir.getHorizontal()==1){
-        xWeapon=r.getX()+r.getW();
-        yWeapon=r.getY()+(r.getH()+arme.getR().getH())/2;
-        wWeapon=arme.getR().getH();
-        hWeapon=arme.getR().getW();
-    }
-    else if(dir.getHorizontal()==-1){
-        xWeapon=r.getX()-arme.getR().getW();
-        yWeapon=r.getY()+(r.getH()+arme.getR().getH())/2;
-        wWeapon=arme.getR().getH();
-        hWeapon=arme.getR().getW();
+    if (dir.getHorizontal() == 1 && dir.getVertical() == -1) {
+        arme.setAngle(45);
+        xWeapon = r.getX() + r.getW();
+        yWeapon = r.getY();
+    } else if (dir.getHorizontal() == 0 && dir.getVertical() == -1) {
+        arme.setAngle(90);
+        xWeapon = r.getX() + r.getW() / 2 - arme.getR().getH() / 2;
+        yWeapon = r.getY();
+    } else if (dir.getHorizontal() == -1 && dir.getVertical() == -1) {
+        arme.setAngle(135);
+        xWeapon = r.getX();
+        yWeapon = r.getY();
+    } else if (dir.getHorizontal() == -1 && dir.getVertical() == 0) {
+        arme.setAngle(180);
+        xWeapon = r.getX();
+        yWeapon = r.getY() + r.getH() / 2 - arme.getR().getH() / 2;
+    } else if (dir.getHorizontal() == -1 && dir.getVertical() == 1) {
+        arme.setAngle(225);
+        xWeapon = r.getX();
+        yWeapon = r.getY() + r.getH();
+    } else if (dir.getHorizontal() == 0 && dir.getVertical() == 1) {
+        arme.setAngle(270);
+        xWeapon = r.getX() + r.getW() / 2 - arme.getR().getH() / 2;
+        yWeapon = r.getY() + r.getH();
+    } else if (dir.getHorizontal() == 1 && dir.getVertical() == 1) {
+        arme.setAngle(315);
+        xWeapon = r.getX() + r.getW();
+        yWeapon = r.getY() + r.getH();
+    } else {
+        arme.setAngle(0);
+        xWeapon = r.getX() + r.getW();
+        yWeapon = r.getY() + r.getH() / 2 - arme.getR().getH() / 2;
     }
 
-    else if(dir.getVertical()==-1){
-        xWeapon=r.getX()+(r.getW()+arme.getR().getW())/2;
-        yWeapon=r.getY();
-        wWeapon=arme.getR().getW();
-        hWeapon=arme.getR().getH();
-    }
+    arme.setFlip((dir.getHorizontal() == -1) ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);
 
-    else{
-        xWeapon=r.getX()+(r.getW()+arme.getR().getW())/2;
-        yWeapon=r.getY()+r.getH();
-        wWeapon=arme.getR().getW();
-        hWeapon=arme.getR().getH();
-    }
 
-    Rect r(xWeapon, yWeapon, wWeapon, hWeapon);
-    arme.setR(r);
+    arme.setPos(xWeapon, yWeapon);
     arme.setSortie(true);
 }
 

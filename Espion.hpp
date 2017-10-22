@@ -16,7 +16,7 @@ class Espion {
 public:
     Espion(Image img);
 
-    void mourir();
+    void mourir(const Image &img);
 
     virtual void deplacement();
 

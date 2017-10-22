@@ -20,13 +20,18 @@ Jeu::~Jeu() {
 
 void Jeu::gameLoop() {
 
+    SDL_Surface *s3 = IMG_Load("../img/mort.png");
+    SDL_Texture *t3 = SDL_CreateTextureFromSurface(rend, s3);
+    SDL_FreeSurface(s3);
+    Image mort(t3);
+
     while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && (!espions[0]->estMort() && !espions[1]->estMort())) {
         keyboard.update();
         for(int i=0; i<2; i++)
             Moteur::lecture(dynamic_cast<Joueur *>(espions[i]), keyboard);
 
         Moteur::deplacements(espions);
-        Moteur::testTouche(espions);
+        Moteur::testTouche(espions, mort);
 
         affichage.display(rend, espions);
         SDL_Delay(16);
@@ -36,6 +41,7 @@ void Jeu::gameLoop() {
 void Jeu::initEspion() {
     SDL_Surface *surface = IMG_Load("../img/espion.png");
     SDL_Texture *texture = SDL_CreateTextureFromSurface(rend, surface);
+
     SDL_Surface* s2=IMG_Load("../img/arme.png");
     SDL_Texture* t2=SDL_CreateTextureFromSurface(rend, s2);
 
@@ -44,6 +50,7 @@ void Jeu::initEspion() {
 
     Image image(texture);
     Image image2(t2);
+
     Arme arme(image2);
 
     espions.push_back(

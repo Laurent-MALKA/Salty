@@ -20,8 +20,10 @@ void Affichage::display(SDL_Renderer *rend, const std::vector<Espion *> &espions
 
 
     afficherBackground(rend);
-    for (int i = 0; i < espions.size(); ++i) {
-        afficherPersonnage(rend, (Joueur *) espions[i]);
+    afficherPersonnage(rend, (Joueur *) espions[0]);
+    afficherPersonnage(rend, (Joueur *) espions[1]);
+    for (int i = 2; i < espions.size(); ++i) {
+        afficherPersonnage(rend, espions[i]);
     }
 
     SDL_RenderPresent(rend);
@@ -43,6 +45,27 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Espion *espion) {
     SDL_RenderCopyEx(rend, espion->getImg().getTx(), NULL, &rect, 0, NULL, flip);
 }
 
+void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion) {
+    afficherPersonnage(rend, (Espion *) espion);
+    if (espion->getArme().estSortie()) {
+        SDL_Rect rect = {};
+        rect.x = espion->getArme().getR().getX();
+        rect.y = espion->getArme().getR().getY();
+        rect.w = espion->getArme().getR().getW();
+        rect.h = espion->getArme().getR().getH();
+
+        SDL_Point point = {0, 0};
+
+        SDL_RenderCopyEx(rend, espion->getArme().getImg().getTx(), nullptr, &rect, -espion->getArme().getAngle(),
+                         &point, espion->getArme().getFlip());
+    }
+
+}
+
 Affichage::~Affichage() {
     SDL_DestroyTexture(bg);
 }
+
+
+
+
