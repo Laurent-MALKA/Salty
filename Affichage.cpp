@@ -62,36 +62,37 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int
     SDL_Texture* rond1;
     SDL_Texture* rond2;
     SDL_Texture* nom;
-    SDL_Rect rect;
+    SDL_Rect rect1;
     SDL_Rect rect2;
     SDL_Rect rect3;
+    SDL_Rect rect;
 
     if(indice==1){
-        rect.x=25;
+        rect1.x=25;
         nom=nomJ1;
     }
     else{
-        rect.x=W_WIDTH-220;
+        rect1.x=W_WIDTH-220;
         nom=nomJ2;
     }
 
-    rect.y=25;
-    rect.w=100;
-    rect.h=20;
+    rect1.y=25;
+    rect1.w=100;
+    rect1.h=20;
 
-    rect2.x=rect.x+rect.w+20;
-    rect2.y=rect.y;
+    rect2.x=rect1.x+rect1.w+20;
+    rect2.y=rect1.y;
     rect2.w=30;
     rect2.h=30;
 
     rect3.x=rect2.x+rect2.w+10;
-    rect3.y=rect.y;
+    rect3.y=rect1.y;
     rect3.w=30;
     rect3.h=30;
 
     afficherPersonnage(rend, (Espion *) espion);
+
     if (espion->getArme().estSortie()) {
-        SDL_Rect rect = {};
         rect.x = espion->getArme().getR().getX();
         rect.y = espion->getArme().getR().getY();
         rect.w = espion->getArme().getR().getW();
