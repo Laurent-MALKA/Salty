@@ -28,15 +28,16 @@ void Jeu::gameLoop() {
 
         affichage.displayBackgroundOnly(rend);
 
-        while(keyboard.isKeyboardReleased()){
+        do {
             keyboard.update();
-        }
+        } while (keyboard.isKeyboardReleased());
 
         affichage.changerBackground(rend, "../img/grass2.png");
 
         while(keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2){
 
-            while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2 && (!j1->estMort() && !j1->estMort())) {
+            while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds() < 2 && j2->getNbRounds() < 2 &&
+                   (!j1->estMort() && !j2->estMort())) {
                 keyboard.update();
 
                 Moteur::lecture(j1, keyboard);
