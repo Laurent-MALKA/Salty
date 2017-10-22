@@ -56,7 +56,6 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
 
     int jx;
     int jy;
-    int jw;
     int jh;
 
     int ex;
@@ -70,7 +69,6 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
         if (jAct->hasJustAttacked()) {
             jx = jAct->getR().getX();
             jy = jAct->getR().getY();
-            jw = jAct->getR().getW();
             jh = jAct->getR().getH();
 
             x1 = jx - 50;
@@ -127,13 +125,7 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
                 eh = espions[j]->getR().getH();
                 if (i != j && !espions[j]->estMort()
                     &&
-                    (jAct->getR().getX() >= espions[j]->getR().getX() &&
-                     jAct->getR().getX() <= espions[j]->getR().getX() + espions[j]->getR().getW()
-                        || jAct->getR().getX()<=espions[j]->getR().getX() && jAct->getR().getX()+jAct->getR().getW()>=espions[j]->getR().getX())
-                    &&
-                    (jAct->getR().getY() >= espions[j]->getR().getY() &&
-                     jAct->getR().getY() <= espions[j]->getR().getY() + espions[j]->getR().getH()
-                        || jAct->getR().getY()<=espions[j]->getR().getY() && jAct->getR().getY()+jAct->getR().getH()>=espions[j]->getR().getY()))
+                    !(ex > x + w || ey > y + h || x > ex + ew || y > ey + eh))
                 {
                     espions[j]->mourir();
                 }
