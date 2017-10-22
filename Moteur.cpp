@@ -42,12 +42,12 @@ void Moteur::deplacements(std::vector<Espion *> espions) {
     }
 }
 
-void Moteur::testTouche(std::vector<Espion *> espions, Image mort) {
+void Moteur::testTouche(std::vector<Espion *> espions) {
     Joueur * jAct;
 
     for(int i=0; i<2; i++){
         jAct=(Joueur *) espions[i];
-        if(jAct->getCdAtq()!=0){
+        if (jAct->hasJustAttacked()) {
             for(int j=0; j<espions.size(); j++){
                 if (i != j && !espions[j]->estMort()
                     &&
@@ -59,7 +59,7 @@ void Moteur::testTouche(std::vector<Espion *> espions, Image mort) {
                      jAct->getR().getY() <= espions[j]->getR().getY() + espions[j]->getR().getH()
                         || jAct->getR().getY()<=espions[j]->getR().getY() && jAct->getR().getY()+jAct->getR().getH()>=espions[j]->getR().getY()))
                 {
-                    espions[j]->mourir(mort);
+                    espions[j]->mourir();
                 }
             }
         }

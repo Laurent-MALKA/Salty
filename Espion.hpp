@@ -14,9 +14,9 @@
 
 class Espion {
 public:
-    Espion(Image img);
+    Espion(Image *img);
 
-    void mourir(const Image &img);
+    void mourir();
 
     virtual void deplacement();
 
@@ -24,11 +24,9 @@ public:
 
     const Rect &getR() const;
 
-    const Image &getImg() const;
+    SDL_Texture *getTexture() const;
 
     void setR(const Rect &r);
-
-    void setImg(const Image &img);
 
     bool estMort() const;
 
@@ -42,10 +40,14 @@ public:
 
     void setDirVertical(int vertical);
 
+    void animationSuivante();
+
 protected:
+    int nbFrames;
+    int indiceAnimation;
     const int v;
     Rect r;
-    Image img;
+    Image *img;
     bool mort;
     Direction dir;
 };

@@ -11,15 +11,13 @@
 
 class Arme {
 public:
-    Arme(const Image &img);
+    Arme(Image *image);
 
     const Rect &getR() const;
 
     void setPos(int x, int y);
 
-    const Image &getImg() const;
-
-    void setImg(const Image &img);
+    SDL_Texture *getTexture() const;
 
     void setSortie(bool sortie);
 
@@ -35,7 +33,7 @@ public:
 
 private:
     Rect r;
-    Image img;
+    Image *image;
     bool sortie;
     double angle;
     SDL_RendererFlip flip;

@@ -5,7 +5,8 @@
 
 #include "Joueur.hpp"
 
-Joueur::Joueur(const Image img, const Input input, const Arme arme) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img), arme(arme){
+Joueur::Joueur(Image *img, Input input, Arme arme) : cdMax(100), cdAtq(0), nbRounds(0), input(input), Espion(img),
+                                                     arme(arme) {
 }
 
 void Joueur::deplacement(){
@@ -112,4 +113,8 @@ int Joueur::getNbRounds() const {
 
 void Joueur::setNbRounds(int nbRounds) {
     Joueur::nbRounds = nbRounds;
+}
+
+bool Joueur::hasJustAttacked() {
+    return cdAtq > cdMax - 10;
 }

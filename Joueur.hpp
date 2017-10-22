@@ -12,7 +12,7 @@
 
 class Joueur: public Espion {
 public:
-    Joueur(Image img, Input input, Arme arme);
+    Joueur(Image *img, Input input, Arme arme);
 
     const int getCdAtq() const;
 
@@ -35,6 +35,8 @@ public:
     const Arme &getArme() const;
 
     void setArme(const Arme &arme);
+
+    bool hasJustAttacked();
 
 private:
     int cdAtq;

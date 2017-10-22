@@ -15,7 +15,7 @@ public:
 
     static void deplacements(std::vector<Espion *> espions);
 
-    static void testTouche(std::vector<Espion *> espions, Image mort);
+    static void testTouche(std::vector<Espion *> espions);
 };
 
 

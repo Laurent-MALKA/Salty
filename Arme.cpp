@@ -4,7 +4,7 @@
 
 #include "Arme.hpp"
 
-Arme::Arme(const Image &img) : img(img), r(0, 0, 50, 15) {
+Arme::Arme(Image *image) : image(image), r(0, 0, 50, 15) {
     sortie=false;
     angle = 0;
 }
@@ -18,12 +18,8 @@ void Arme::setPos(int x, int y) {
     r.setY(y);
 }
 
-const Image &Arme::getImg() const {
-    return img;
-}
-
-void Arme::setImg(const Image &img) {
-    Arme::img = img;
+SDL_Texture *Arme::getTexture() const {
+    return image->getTexture(0);
 }
 
 bool Arme::estSortie() const {
