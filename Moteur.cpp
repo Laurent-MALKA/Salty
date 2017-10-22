@@ -45,11 +45,9 @@ void Moteur::deplacements(std::vector<Espion *> espions) {
 void Moteur::testTouche(std::vector<Espion *> espions) {
     Joueur * jAct;
 
-    int oldx;
-    int oldy;
-    int oldw;
-    int oldh;
     double angle;
+    int x1, x2, x3;
+    int y1, y2, y3;
 
     int x;
     int y;
@@ -61,30 +59,81 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
     int jw;
     int jh;
 
+    int ex;
+    int ey;
+    int ew;
+    int eh;
+
     for(int i=0; i<2; i++){
         jAct=(Joueur *) espions[i];
 
-        oldx = jAct->getArme().getR().getX();
-        oldy = jAct->getArme().getR().getY();
-        oldw = jAct->getArme().getR().getW();
-        oldh = jAct->getArme().getR().getH();
-        angle = jAct->getArme().getAngle();
-
-        x = (int) ((angle > 0 && angle < 45 || angle > 315 && angle < 360) ? oldx : oldx - oldh * sin(angle));
-        y = (int) ((angle > 0 && angle < 90) ? oldy : oldy - oldh * cos(angle));
-        w = (int) (oldh * sin(angle) + oldw * cos(angle));
-        h = (int) (oldh * cos(angle) + oldw * sin(angle));
-
-        jx = jAct->getR().getX();
-        jy = jAct->getR().getY();
-        jw = jAct->getR().getW();
-        jh = jAct->getR().getH();
-
         if (jAct->hasJustAttacked()) {
+            jx = jAct->getR().getX();
+            jy = jAct->getR().getY();
+            jw = jAct->getR().getW();
+            jh = jAct->getR().getH();
+
+            x1 = jx - 50;
+            x2 = x1 + 50;
+            x3 = x2 + 50;
+
+            y1 = jy + jh / 2 - 75;
+            y2 = y1 + 50;
+            y3 = y2 + 50;
+
+            angle = jAct->getArme().getAngle();
+
+            w = 50;
+            h = 50;
+
+            switch ((int) angle) {
+                case 0:
+                    x = x3;
+                    y = y2;
+                    break;
+                case 45:
+                    x = x3;
+                    y = y1;
+                    break;
+                case 90:
+                    x = x2;
+                    y = y1;
+                    break;
+                case 135:
+                    x = x1;
+                    y = y1;
+                    break;
+                case 180:
+                    x = x1;
+                    y = y2;
+                    break;
+                case 225:
+                    x = x1;
+                    y = y3;
+                    break;
+                case 270:
+                    x = x2;
+                    y = y3;
+                    break;
+                default:
+                    x = x3;
+                    y = y3;
+                    break;
+            }
             for(int j=0; j<espions.size(); j++){
+                ex = espions[j]->getR().getX();
+                ey = espions[j]->getR().getY();
+                ew = espions[j]->getR().getW();
+                eh = espions[j]->getR().getH();
                 if (i != j && !espions[j]->estMort()
                     &&
-                    !(jx > x + w || jy > y + h || x > jx + jw || y > jy + jh))
+                    (jAct->getR().getX() >= espions[j]->getR().getX() &&
+                     jAct->getR().getX() <= espions[j]->getR().getX() + espions[j]->getR().getW()
+                        || jAct->getR().getX()<=espions[j]->getR().getX() && jAct->getR().getX()+jAct->getR().getW()>=espions[j]->getR().getX())
+                    &&
+                    (jAct->getR().getY() >= espions[j]->getR().getY() &&
+                     jAct->getR().getY() <= espions[j]->getR().getY() + espions[j]->getR().getH()
+                        || jAct->getR().getY()<=espions[j]->getR().getY() && jAct->getR().getY()+jAct->getR().getH()>=espions[j]->getR().getY()))
                 {
                     espions[j]->mourir();
                 }
