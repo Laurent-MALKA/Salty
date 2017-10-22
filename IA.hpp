@@ -9,7 +9,7 @@
 
 class IA: public Espion {
 public:
-    IA(const Image &img);
+    IA(Image *img);
     void deplacement();
 
     int getFrame() const;

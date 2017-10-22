@@ -5,7 +5,7 @@
 #include "Espion.hpp"
 #include "params.hpp"
 
-Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false) {
+Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0), frame(0) {
 
     Espion::r.setW(50);
     Espion::r.setH(75);
@@ -13,9 +13,9 @@ Espion::Espion(const Image img) : r(0,0,0,0), img(img), dir(), v(5), mort(false)
     Espion::r.setY(rand()%(W_HEIGHT-r.getH()));
 }
 
-void Espion::mourir(const Image &img) {
+void Espion::mourir() {
     mort=true;
-    Espion::img = img;
+    indiceAnimation = 3;
     int t = r.getW();
     r.setW(r.getH());
     r.setH(t);
@@ -43,6 +43,7 @@ void Espion::deplacement(){
 
     Espion::r.setX(newX);
     Espion::r.setY(newY);
+    animationSuivante();
 }
 
 bool Espion::estMort() const {
@@ -61,16 +62,8 @@ const Rect &Espion::getR() const {
     return r;
 }
 
-const Image &Espion::getImg() const {
-    return img;
-}
-
 void Espion::setR(const Rect &r) {
     Espion::r = r;
-}
-
-void Espion::setImg(const Image &img) {
-    Espion::img = img;
 }
 
 void Espion::setMort(bool estMort) {
@@ -87,4 +80,16 @@ void Espion::setDirHorizontal(int horizontal) {
 
 void Espion::setDirVertical(int vertical) {
     dir.setVertical(vertical);
+}
+
+SDL_Texture *Espion::getTexture() const {
+    return img->getTexture(indiceAnimation);
+}
+
+void Espion::animationSuivante() {
+    ++frame;
+    if (frame > 10 && (dir.getVertical() || dir.getHorizontal())) {
+        frame = 0;
+        indiceAnimation = 1 - indiceAnimation;
+    }
 }

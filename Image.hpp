@@ -7,18 +7,17 @@
 
 
 #include <SDL2/SDL_render.h>
+#include <vector>
 
 class Image {
-
 public:
-    Image(SDL_Texture *tx);
+    void addTexture(SDL_Texture *texture);
 
-    SDL_Texture *getTx() const;
+    SDL_Texture *getTexture(int i) const;
 
-    void setTx(SDL_Texture *tx);
 
 private:
-    SDL_Texture*  tx;
+    std::vector<SDL_Texture *> textures;
 };
 
 

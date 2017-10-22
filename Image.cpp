@@ -4,15 +4,11 @@
 
 #include "Image.hpp"
 
-Image::Image(SDL_Texture *tx) : tx(tx) {
-
+SDL_Texture *Image::getTexture(int i) const {
+    return textures[i];
 }
 
-SDL_Texture *Image::getTx() const {
-    return tx;
-}
-
-void Image::setTx(SDL_Texture *tx) {
-    Image::tx = tx;
+void Image::addTexture(SDL_Texture *texture) {
+    textures.push_back(texture);
 }
 

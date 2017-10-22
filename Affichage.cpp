@@ -42,7 +42,7 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Espion *espion) {
 
     SDL_RendererFlip flip = (espion->getDir().getHorizontal() == -1) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
 
-    SDL_RenderCopyEx(rend, espion->getImg().getTx(), NULL, &rect, 0, NULL, flip);
+    SDL_RenderCopyEx(rend, espion->getTexture(), NULL, &rect, 0, NULL, flip);
 }
 
 void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion) {
@@ -56,7 +56,7 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion) {
 
         SDL_Point point = {0, 0};
 
-        SDL_RenderCopyEx(rend, espion->getArme().getImg().getTx(), nullptr, &rect, -espion->getArme().getAngle(),
+        SDL_RenderCopyEx(rend, espion->getArme().getTexture(), nullptr, &rect, -espion->getArme().getAngle(),
                          &point, espion->getArme().getFlip());
     }
 

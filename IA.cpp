@@ -4,7 +4,7 @@
 
 #include "IA.hpp"
 
-IA::IA(const Image &img) : Espion(img), frame(0) {
+IA::IA(Image *img) : Espion(img), frame(0) {
 }
 
 void IA::deplacement(){
