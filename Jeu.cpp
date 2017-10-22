@@ -58,6 +58,7 @@ void Jeu::gameLoop() {
             resetEspions(j1, j2);
         }
 
+        affichage.display(rend, espions);
         SDL_Delay(2000);
         affichage.changerBackground(rend, "../img/ecran_titre.png");
         j1->setNbRounds(0);
