@@ -5,7 +5,8 @@
 #ifndef SALTY_MOTEUR_HPP
 #define SALTY_MOTEUR_HPP
 
-
+#include <vector>
+#include <SDL2/SDL_image.h>
 #include "Joueur.hpp"
 #include "Clavier.hpp"
 

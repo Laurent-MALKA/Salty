@@ -4,7 +4,8 @@
 
 #include "Arme.hpp"
 
-Arme::Arme(Image *image) : image(image), r(0, 0, 50, 15) {
+Arme::Arme(Image *image) :r(0, 0, 50, 15) , image(image) {
+    flip= SDL_FLIP_NONE;
     sortie=false;
     angle = 0;
 }

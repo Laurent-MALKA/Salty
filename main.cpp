@@ -1,7 +1,4 @@
-#include "Jeu.hpp"
-
-int init(int);
-void close();
+#include "main.hpp"
 
 int main() {
 
@@ -54,3 +51,5 @@ void close(){
     TTF_Quit();
     SDL_Quit();
 }
+
+

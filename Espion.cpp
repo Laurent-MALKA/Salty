@@ -3,10 +3,8 @@
 //
 
 #include "Espion.hpp"
-#include "params.hpp"
 
-Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0){
-    frame=0;
+Espion::Espion(Image *img) :indiceAnimation(0), v(5), r(0, 0, 0, 0), img(img), mort(false), dir(), frame(0) {
     randomRect();
 }
 

@@ -35,7 +35,7 @@ void Affichage::display(SDL_Renderer *rend, const std::vector<Espion *> &espions
     afficherBackground(rend);
     afficherPersonnage(rend, (Joueur *) espions[0], 1);
     afficherPersonnage(rend, (Joueur *) espions[1], 2);
-    for (int i = 2; i < espions.size(); ++i) {
+    for (unsigned i = 2; i < espions.size(); ++i) {
         afficherPersonnage(rend, espions[i]);
     }
 
@@ -101,7 +101,7 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int
 
         SDL_Point point = {0, 0};
 
-        SDL_RenderCopyEx(rend, espion->getArme().getTexture(), nullptr, &rect, -espion->getArme().getAngle(),
+        SDL_RenderCopyEx(rend, espion->getArme().getTexture(), NULL, &rect, -espion->getArme().getAngle(),
                          &point, espion->getArme().getFlip());
     }
 

@@ -4,13 +4,13 @@
 
 #include "Jeu.hpp"
 
-
-Jeu::Jeu() {
+Jeu::Jeu() : sound("../sound/musique_jeu_espion.wav"){
     window = SDL_CreateWindow("Salty", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, W_WIDTH, W_HEIGHT, 0);
     rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     srand(time(NULL));
     initEspion();
     affichage.init(rend);
+    SDL_PauseAudio(0);
 }
 
 Jeu::~Jeu() {
@@ -19,6 +19,7 @@ Jeu::~Jeu() {
 }
 
 void Jeu::gameLoop() {
+
     Joueur* j1;
     Joueur* j2;;
 
@@ -65,7 +66,8 @@ void Jeu::gameLoop() {
         char texte[100];
         strcpy(texte, (j1->getNbRounds() == 2) ? "Le joueur 1 gagne" : "Le joueur 2 gagne");
 
-        SDL_Surface *surface = TTF_RenderText_Solid(font, texte, {0, 0, 0, 0});
+        SDL_Color color={0, 0, 0, 0};
+        SDL_Surface *surface = TTF_RenderText_Solid(font, texte, color);
         SDL_Texture *text = SDL_CreateTextureFromSurface(rend, surface);
 
         SDL_Rect rect = {};
@@ -80,8 +82,8 @@ void Jeu::gameLoop() {
         affichage.changerBackground(rend, "../img/ecran_titre.png");
         j1->setNbRounds(0);
         j2->setNbRounds(0);
-
     }
+    SDL_CloseAudio();
 }
 
 void Jeu::initEspion() {
@@ -142,7 +144,7 @@ void Jeu::resetEspions(Joueur* j1, Joueur* j2){
     j1->setCdAtq(0);
     j2->setCdAtq(0);
 
-    for(int i=0; i<espions.size(); i++){
+    for(unsigned i=0; i<espions.size(); i++){
         espions[i]->setMort(false);
         espions[i]->randomRect();
         espions[i]->setIndiceAnimation(0);

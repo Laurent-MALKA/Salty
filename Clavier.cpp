@@ -2,12 +2,10 @@
 // Created by laurent on 10/21/17.
 //
 
-#include <SDL2/SDL_system.h>
-#include <SDL2/SDL_events.h>
 #include "Clavier.hpp"
 
 Clavier::Clavier() {
-    keyboard = (Uint8 *) SDL_GetKeyboardState(nullptr);
+    keyboard = (Uint8 *) SDL_GetKeyboardState(NULL);
     currentState = (bool *) malloc(SDL_NUM_SCANCODES * sizeof(bool));
     previousState = (bool *) malloc(SDL_NUM_SCANCODES * sizeof(bool));
 

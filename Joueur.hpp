@@ -14,9 +14,9 @@ class Joueur: public Espion {
 public:
     Joueur(Image *img, Input input, Arme arme);
 
-    const int getCdAtq() const;
+    const int getCdAtq();
 
-    const int getCdMax() const;
+    const int getCdMax();
 
     int getNbRounds() const;
 

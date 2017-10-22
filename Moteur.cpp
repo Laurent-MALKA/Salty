@@ -2,10 +2,6 @@
 // Created by laurent on 10/21/17.
 //
 
-#include <vector>
-#include <SDL2/SDL_image.h>
-#include "Joueur.hpp"
-#include "Clavier.hpp"
 #include "Moteur.hpp"
 
 void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
@@ -36,7 +32,7 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
 }
 
 void Moteur::deplacements(std::vector<Espion *> espions) {
-    for(int i=0; i<espions.size(); i++){
+    for(unsigned i=0; i<espions.size(); i++){
         if (!espions[i]->estMort())
             espions[i]->deplacement();
     }
@@ -63,7 +59,7 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
     int ew;
     int eh;
 
-    for(int i=0; i<2; i++){
+    for(unsigned i=0; i<2; i++){
         jAct=(Joueur *) espions[i];
 
         if (jAct->hasJustAttacked()) {
@@ -118,7 +114,7 @@ void Moteur::testTouche(std::vector<Espion *> espions) {
                     y = y3;
                     break;
             }
-            for(int j=0; j<espions.size(); j++){
+            for(unsigned j=0; j<espions.size(); j++){
                 ex = espions[j]->getR().getX();
                 ey = espions[j]->getR().getY();
                 ew = espions[j]->getR().getW();

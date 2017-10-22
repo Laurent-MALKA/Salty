@@ -5,7 +5,7 @@
 #ifndef SALTY_JEU_HPP
 #define SALTY_JEU_HPP
 
-
+#include "Sound.hpp"
 #include <vector>
 #include <SDL2/SDL.h>
 #include "Espion.hpp"
@@ -43,6 +43,7 @@ private:
     std::vector<Espion *> espions;
 
     Clavier keyboard;
+    Sound sound;
 };
 
 
