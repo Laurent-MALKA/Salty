@@ -4,32 +4,44 @@
 
 #include "IA.hpp"
 
-IA::IA(Image *img) : Espion(img), frame(0) {
+IA::IA(Image *img) : Espion(img) {
 }
 
 void IA::deplacement(){
-    int r;
+    int rand;
 
-    r=rand()%3;
-    if(r==0 && frame%20==0){
-        r=rand()%3;
-        if(r>=1){
-            r=rand()%3-1;
-            IA::dir.setHorizontal(r);
-            r=rand()%3-1;
-            IA::dir.setVertical(r);
+    rand=rand()%3;
+    if(rand==0 && frame%20==0){
+        rand = rand() % 4 - 1;
+
+        if (Espion::r.getX() <= 102) {
+            if (rand == 2) {
+                rand = 1;
+            }
+        } else if (Espion::r.getX() + Espion::r.getW() >= W_WIDTH - 102) {
+            if (rand == 2) {
+                rand = -1;
+            }
+        } else {
+            rand = rand() % 3 - 1;
         }
+
+        IA::dir.setHorizontal(rand);
+
+        rand = rand() % 4 - 1;
+
+        if (Espion::r.getY() <= 102) {
+            if (rand == 2) {
+                rand = 1;
+            }
+        } else if (Espion::r.getY() + Espion::r.getH() >= W_HEIGHT - 102) {
+            if (rand == 2) {
+                rand = -1;
+            }
+        } else {
+            rand = rand() % 3 - 1;
+        }
+
+        IA::dir.setVertical(rand);
     }
-
-    Espion::deplacement();
-
-    IA::frame=(IA::frame+1)%9999;
-}
-
-int IA::getFrame() const {
-    return frame;
-}
-
-void IA::setFrame(int frame) {
-    IA::frame = frame;
 }
