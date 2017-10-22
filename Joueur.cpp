@@ -12,20 +12,8 @@ Joueur::Joueur(Image *img, Input input, Arme arme) : cdMax(100), cdAtq(0), nbRou
 void Joueur::deplacement(){
     if(cdAtq==0) {
         Espion::deplacement();
-        if(dir.getHorizontal()==1){
-            //Animation marche vers droite
-        }
-        else if(dir.getHorizontal()==-1){
-            //Animation marhce vers gauche
-        }
-        else{
-            //Animation idle
-        }
     }
     else {
-        if (cdAtq == cdMax) {
-            //Animation attaque
-        }
         cdAtq--;
         if(cdAtq==0){
             arme.setSortie(false);
