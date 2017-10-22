@@ -14,7 +14,7 @@ void IA::deplacement(){
     if(random==0 && cptFrame%20==0){
         random = rand() % 4 - 1;
 
-        if (Espion::r.getX() <= 102) {
+        if (Espion::r.getX() <= 100) {
             if (random == 2) {
                 random = 1;
             }
@@ -30,11 +30,11 @@ void IA::deplacement(){
 
         random = rand() % 4 - 1;
 
-        if (Espion::r.getY() <= 102) {
+        if (Espion::r.getY() <= 150) {
             if (random == 2) {
                 random = 1;
             }
-        } else if (Espion::r.getY() + Espion::r.getH() >= W_HEIGHT - 102) {
+        } else if (Espion::r.getY() + Espion::r.getH() >= W_HEIGHT - 100) {
             if (random == 2) {
                 random = -1;
             }

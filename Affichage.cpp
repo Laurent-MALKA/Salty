@@ -77,7 +77,7 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int
         nom=nomJ2;
     }
 
-    rect1.y=10;
+    rect1.y=20;
     rect1.w=100;
     rect1.h=20;
 

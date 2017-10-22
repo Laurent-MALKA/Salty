@@ -23,7 +23,7 @@ Rect Espion::randomRect(){
     newR.setW(50);
     newR.setH(75);
     newR.setX(rand() % (W_WIDTH - newR.getW()));
-    newR.setY(rand() % (W_HEIGHT - r.getH()-50)+50);
+    newR.setY(rand() % (W_HEIGHT - r.getH()-50)+75);
     setR(newR);
     return newR;
 }
@@ -41,8 +41,8 @@ void Espion::deplacement(){
         newX=W_WIDTH-pW;
     }
 
-    if(newY<50){
-        newY=50;
+    if(newY<75){
+        newY=75;
     }
     else if(newY>W_HEIGHT-pH){
         newY=W_HEIGHT-pH;
