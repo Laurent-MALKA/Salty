@@ -45,5 +45,7 @@ void IA::deplacement(){
         IA::dir.setVertical(random);
     }
 
+    Espion::deplacement();
+
     cptFrame=(cptFrame+1)%9999;
 }
