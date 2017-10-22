@@ -20,9 +20,8 @@ private:
     SDL_AudioSpec wav_spec;
     Uint32 wav_length;
     Uint8 *wav_buffer;
-
-    void audioCallback(void *udata, Uint8 *stream, int len);
 };
 
+void audioCallback(void *udata, Uint8 *stream, int len);
 
 #endif //SALTY_SOUND_HPP

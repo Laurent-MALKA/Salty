@@ -18,10 +18,14 @@ void Sound::init() {
     wav_spec.format = AUDIO_S16;
     wav_spec.channels = 2;
     wav_spec.samples = 1024;
-//    wav_spec.callback = audioCallback;
+    wav_spec.callback = audioCallback;
     wav_spec.userdata = NULL;
 
     if (SDL_OpenAudio(&wav_spec, NULL) < 0) {
         fprintf(stderr, "Erreur d'ouverture audio: %s\n", SDL_GetError());
     }
+}
+
+void audioCallback(void *udata, Uint8 *stream, int len) {
+
 }

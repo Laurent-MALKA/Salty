@@ -19,7 +19,11 @@ void Espion::mourir() {
 }
 
 Rect Espion::randomRect(){
-    Rect newR(50, 75, rand()%(W_WIDTH-newR.getW()), rand()%(W_HEIGHT-r.getH()));
+    Rect newR(0, 0, 0, 0);
+    newR.setW(50);
+    newR.setH(75);
+    newR.setX(rand() % (W_WIDTH - newR.getW()));
+    newR.setY(rand() % (W_HEIGHT - r.getH()));
     setR(newR);
     return newR;
 }
