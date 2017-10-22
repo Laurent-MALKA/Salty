@@ -28,11 +28,13 @@ void Jeu::gameLoop() {
 
         affichage.displayBackgroundOnly(rend);
 
+        SDL_Delay(2000);
+
         while(keyboard.isKeyboardReleased()){
             keyboard.update();
         }
 
-        affichage.changerBackground(rend, "../img/grass.jpg");
+        affichage.changerBackground(rend, "../img/grass2.png");
 
         while(keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2){
 
@@ -52,7 +54,7 @@ void Jeu::gameLoop() {
 
         }
 
-        affichage.changerBackground(rend, "../img/ecran_titre.jpg");
+        affichage.changerBackground(rend, "../img/ecran_titre.png");
         initEspion();
     }
 }
