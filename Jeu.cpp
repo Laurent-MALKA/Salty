@@ -59,6 +59,23 @@ void Jeu::gameLoop() {
         }
 
         affichage.display(rend, espions);
+
+        TTF_Font *font = TTF_OpenFont("../font/Roboto-Regular.ttf", 50);
+
+        char texte[100];
+        strcpy(texte, (j1->getNbRounds() == 2) ? "Le joueur 1 gagne" : "Le joueur 2 gagne");
+
+        SDL_Surface *surface = TTF_RenderText_Solid(font, texte, {0, 0, 0, 0});
+        SDL_Texture *text = SDL_CreateTextureFromSurface(rend, surface);
+
+        SDL_Rect rect = {};
+        TTF_SizeText(font, texte, &rect.w, &rect.h);
+        rect.x = W_WIDTH / 2 - rect.w / 2;
+        rect.y = W_HEIGHT / 2 - rect.h / 2;
+        SDL_RenderCopy(rend, text, NULL, &rect);
+
+        SDL_RenderPresent(rend);
+
         SDL_Delay(2000);
         affichage.changerBackground(rend, "../img/ecran_titre.png");
         j1->setNbRounds(0);
