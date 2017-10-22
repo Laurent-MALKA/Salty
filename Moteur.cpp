@@ -29,7 +29,7 @@ void Moteur::lecture(Joueur *j, const Clavier &keyboard) {
         j->setDirVertical(0);
     }
 
-    if (!j->getArme().estSortie() && keyboard.isStillPressed(j->getInput().getAttaque())) {
+    if (!j->getArme().estSortie() && keyboard.isJustPressed(j->getInput().getAttaque())) {
         j->attaque();
     }
 
