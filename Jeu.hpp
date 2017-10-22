@@ -32,6 +32,8 @@ public:
 
     SDL_Renderer *getRend() const;
 
+    void resetEspions(Joueur* j1, Joueur* j2) ;
+
 private:
     SDL_Window *window;
     SDL_Renderer *rend;

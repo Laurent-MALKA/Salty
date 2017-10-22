@@ -5,12 +5,9 @@
 #include "Espion.hpp"
 #include "params.hpp"
 
-Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0), cptFrame(0) {
-
-    Espion::r.setW(50);
-    Espion::r.setH(75);
-    Espion::r.setX(rand()%(W_WIDTH-r.getW()));
-    Espion::r.setY(rand()%(W_HEIGHT-r.getH()));
+Espion::Espion(Image *img) : r(0, 0, 0, 0), img(img), dir(), v(5), mort(false), indiceAnimation(0){
+    frame=0;
+    randomRect();
 }
 
 void Espion::mourir() {
@@ -19,6 +16,12 @@ void Espion::mourir() {
     int t = r.getW();
     r.setW(r.getH());
     r.setH(t);
+}
+
+Rect Espion::randomRect(){
+    Rect newR(50, 75, rand()%(W_WIDTH-newR.getW()), rand()%(W_HEIGHT-r.getH()));
+    setR(newR);
+    return newR;
 }
 
 void Espion::deplacement(){
@@ -62,6 +65,22 @@ const Rect &Espion::getR() const {
     return r;
 }
 
+int Espion::getIndiceAnimation() const {
+    return indiceAnimation;
+}
+
+Image *Espion::getImg() const {
+    return img;
+}
+
+void Espion::setIndiceAnimation(int indiceAnimation) {
+    Espion::indiceAnimation = indiceAnimation;
+}
+
+void Espion::setImg(Image *img) {
+    Espion::img = img;
+}
+
 void Espion::setR(const Rect &r) {
     Espion::r = r;
 }
@@ -87,9 +106,17 @@ SDL_Texture *Espion::getTexture() const {
 }
 
 void Espion::animationSuivante() {
-    ++cptFrame;
-    if (cptFrame > 10 && (dir.getVertical() || dir.getHorizontal())) {
-        cptFrame = 0;
+    ++frame;
+    if (frame> 10 && (dir.getVertical() || dir.getHorizontal())) {
+        frame = 0;
         indiceAnimation = 1 - indiceAnimation;
     }
+}
+
+int Espion::getFrame() const {
+    return frame;
+}
+
+void Espion::setFrame(int frame) {
+    Espion::frame = frame;
 }

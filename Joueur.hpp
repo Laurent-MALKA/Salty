@@ -38,6 +38,8 @@ public:
 
     bool hasJustAttacked();
 
+    void setArmeSortie(bool t);
+
 private:
     int cdAtq;
     const int cdMax;

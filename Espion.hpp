@@ -42,14 +42,28 @@ public:
 
     void animationSuivante();
 
+    Rect randomRect();
+
+    int getIndiceAnimation() const;
+
+    void setIndiceAnimation(int indiceAnimation);
+
+    Image *getImg() const;
+
+    void setImg(Image *img);
+
+    int getFrame() const;
+
+    void setFrame(int frame);
+
 protected:
-    int cptFrame;
     int indiceAnimation;
     const int v;
     Rect r;
     Image *img;
     bool mort;
     Direction dir;
+    int frame;
 };
 
 

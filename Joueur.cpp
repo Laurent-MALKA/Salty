@@ -115,6 +115,10 @@ void Joueur::setNbRounds(int nbRounds) {
     Joueur::nbRounds = nbRounds;
 }
 
+void Joueur::setArmeSortie(bool t){
+    arme.setSortie(t);
+}
+
 bool Joueur::hasJustAttacked() {
     return cdAtq > cdMax - 10;
 }

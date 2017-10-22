@@ -9,6 +9,13 @@
 #include <vector>
 #include "Espion.hpp"
 #include "Joueur.hpp"
+#include <string>
+#include "params.hpp"
+#include <vector>
+#include <SDL2/SDL_rect.h>
+#include <SDL2/SDL_system.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 class Affichage {
 public:
@@ -18,14 +25,24 @@ public:
 
     void display(SDL_Renderer *rend, const std::vector<Espion *> &espions);
 
+    SDL_Texture *getBg() const;
+
+    void setBg(SDL_Texture *bg);
+
+    void changerBackground(SDL_Renderer*, std::string path);
+
 private:
-    SDL_Texture *bg;
+    SDL_Texture* bg;
+    SDL_Texture* nomJ1;
+    SDL_Texture* nomJ2;
+    SDL_Texture* rond_vert;
+    SDL_Texture* rond_rouge;
 
     void afficherBackground(SDL_Renderer *rend);
 
     void afficherPersonnage(SDL_Renderer *rend, const Espion *espion);
 
-    void afficherPersonnage(SDL_Renderer *rend, const Joueur *espion);
+    void afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int i);
 
 };
 

@@ -19,16 +19,39 @@ Jeu::~Jeu() {
 }
 
 void Jeu::gameLoop() {
-    while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && (!espions[0]->estMort() && !espions[1]->estMort())) {
-        keyboard.update();
-        for(int i=0; i<2; i++)
-            Moteur::lecture(dynamic_cast<Joueur *>(espions[i]), keyboard);
+    Joueur* j1;
+    Joueur* j2;;
 
-        Moteur::deplacements(espions);
-        Moteur::testTouche(espions);
+    while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE)) {
+        j1= (Joueur*) espions[0];
+        j2= (Joueur*) espions[1];
 
-        affichage.display(rend, espions);
-        SDL_Delay(16);
+        while(keyboard.isKeyboardReleased()){
+
+        }
+
+        affichage.changerBackground(rend, "../img/grass.jpg");
+
+        while(keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2){
+
+            while (keyboard.isStillReleased(SDL_SCANCODE_ESCAPE) && j1->getNbRounds()<2 && j2->getNbRounds()<2 && (!espions[0]->estMort() && !espions[1]->estMort())) {
+                keyboard.update();
+                for (int i = 0; i < 2; i++)
+                    Moteur::lecture(dynamic_cast<Joueur *>(espions[i]), keyboard);
+
+                Moteur::deplacements(espions);
+                Moteur::testTouche(espions);
+
+                affichage.display(rend, espions);
+                SDL_Delay(16);
+            }
+
+            resetEspions(j1, j2);
+
+        }
+
+        affichage.changerBackground(rend, "../img/ecran_titre.jpg");
+        initEspion();
     }
 }
 
@@ -81,6 +104,19 @@ void Jeu::initEspion() {
     for (int i = 0; i < 20; ++i) {
         espions.push_back(new IA(image_espion));
     }
+}
+
+void Jeu::resetEspions(Joueur* j1, Joueur* j2){
+    j1->setArmeSortie(false);
+    j2->setArmeSortie(false);
+
+    for(int i=0; i<espions.size(); i++){
+        espions[i]->setMort(false);
+        espions[i]->randomRect();
+        espions[i]->setIndiceAnimation(0);
+        espions[i]->setFrame(0);
+    }
+
 }
 
 SDL_Window *Jeu::getWindow() const {

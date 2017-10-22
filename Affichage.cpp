@@ -2,16 +2,28 @@
 // Created by laurent on 10/21/17.
 //
 
-#include <vector>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_system.h>
-#include <SDL2/SDL_image.h>
 #include "Affichage.hpp"
 
 void Affichage::init(SDL_Renderer *rend) {
-    SDL_Surface *surface = IMG_Load("../img/background.jpg");
+    SDL_Surface *surface = IMG_Load("../img/ecran_titre.jpg");
+    SDL_Surface* s;
+    TTF_Font* font;
+    SDL_Color color={0,0,0,0};
+
+    font=TTF_OpenFont("font/Roboto-Regular.ttf", 20);
     bg = SDL_CreateTextureFromSurface(rend, surface);
+
+    s=TTF_RenderText_Solid(font, "Joueur1 :", color);
+    nomJ1=SDL_CreateTextureFromSurface(rend, s);
+    s=TTF_RenderText_Solid(font, "Joueur2 :", color);
+    nomJ2=SDL_CreateTextureFromSurface(rend, s);
+
+    rond_rouge=SDL_CreateTextureFromSurface(rend, IMG_Load("rond_rouge.png"));
+    rond_vert=SDL_CreateTextureFromSurface(rend, IMG_Load("rond_vert.png"));
+
+    SDL_FreeSurface(s);
     SDL_FreeSurface(surface);
+    TTF_CloseFont(font);
 }
 
 void Affichage::display(SDL_Renderer *rend, const std::vector<Espion *> &espions) {
@@ -20,8 +32,8 @@ void Affichage::display(SDL_Renderer *rend, const std::vector<Espion *> &espions
 
 
     afficherBackground(rend);
-    afficherPersonnage(rend, (Joueur *) espions[0]);
-    afficherPersonnage(rend, (Joueur *) espions[1]);
+    afficherPersonnage(rend, (Joueur *) espions[0], 1);
+    afficherPersonnage(rend, (Joueur *) espions[1], 2);
     for (int i = 2; i < espions.size(); ++i) {
         afficherPersonnage(rend, espions[i]);
     }
@@ -45,7 +57,38 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Espion *espion) {
     SDL_RenderCopyEx(rend, espion->getTexture(), NULL, &rect, 0, NULL, flip);
 }
 
-void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion) {
+void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int indice) {
+
+    SDL_Texture* rond1;
+    SDL_Texture* rond2;
+    SDL_Texture* nom;
+    SDL_Rect rect;
+    SDL_Rect rect2;
+    SDL_Rect rect3;
+
+    if(indice==1){
+        rect.x=25;
+        nom=nomJ1;
+    }
+    else{
+        rect.x=W_WIDTH-220;
+        nom=nomJ2;
+    }
+
+    rect.y=25;
+    rect.w=100;
+    rect.h=20;
+
+    rect2.x=rect.x+rect.w+20;
+    rect2.y=rect.y;
+    rect2.w=30;
+    rect2.h=30;
+
+    rect3.x=rect2.x+rect2.w+10;
+    rect3.y=rect.y;
+    rect3.w=30;
+    rect3.h=30;
+
     afficherPersonnage(rend, (Espion *) espion);
     if (espion->getArme().estSortie()) {
         SDL_Rect rect = {};
@@ -60,10 +103,51 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion) {
                          &point, espion->getArme().getFlip());
     }
 
+    if(espion->getNbRounds()>0){
+        rond1=rond_vert;
+        if(espion->getNbRounds()>1){
+            rond2=rond_vert;
+        }
+        else{
+            rond2=rond_rouge;
+        }
+    }
+    else{
+        rond1=rond_rouge;
+    }
+
+    if(indice==1){
+
+    }
+
+    SDL_RenderCopy(rend, nom, NULL, &rect);
+    SDL_RenderCopy(rend, rond1, NULL, &rect2);
+    SDL_RenderCopy(rend, rond2, NULL, &rect3);
+
+    SDL_DestroyTexture(nom);
+    SDL_DestroyTexture(rond1);
+    SDL_DestroyTexture(rond2);
+
 }
 
 Affichage::~Affichage() {
     SDL_DestroyTexture(bg);
+    SDL_DestroyTexture(rond_vert);
+    SDL_DestroyTexture(rond_rouge);
+    SDL_DestroyTexture(nomJ1);
+    SDL_DestroyTexture(nomJ2);
+}
+
+void Affichage::changerBackground(SDL_Renderer* rend, std::string path) {
+    bg=SDL_CreateTextureFromSurface(rend, IMG_Load(path.c_str()));
+}
+
+SDL_Texture *Affichage::getBg() const {
+    return bg;
+}
+
+void Affichage::setBg(SDL_Texture *bg) {
+    Affichage::bg = bg;
 }
 
 
