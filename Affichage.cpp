@@ -118,10 +118,6 @@ void Affichage::afficherPersonnage(SDL_Renderer *rend, const Joueur *espion, int
         rond1=rond_rouge;
     }
 
-    if(indice==1){
-
-    }
-
     SDL_RenderCopy(rend, nom, NULL, &rect1);
     SDL_RenderCopy(rend, rond1, NULL, &rect2);
     SDL_RenderCopy(rend, rond2, NULL, &rect3);
