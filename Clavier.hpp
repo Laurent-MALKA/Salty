@@ -33,6 +33,8 @@ public:
 
     bool isJustReleased(int scancode) const;
 
+    bool isKeyboardReleased();
+
 private:
     Uint8 *keyboard;
     bool *currentState;

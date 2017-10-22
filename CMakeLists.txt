@@ -6,7 +6,7 @@ include_directories(${SDL2_INCLUDE_DIR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${project_SOURCE_DIR}/cmake")
 
-set(SOURCE_FILES main.cpp Espion.cpp Espion.hpp Rect.cpp Rect.hpp Jeu.cpp Jeu.hpp Joueur.cpp Joueur.hpp IA.cpp IA.hpp Input.cpp Input.hpp Image.cpp Image.hpp Moteur.cpp Moteur.hpp Affichage.cpp Affichage.hpp Direction.cpp Direction.hpp params.hpp Clavier.cpp Clavier.hpp Arme.cpp Arme.hpp)
+set(SOURCE_FILES main.cpp Espion.cpp Espion.hpp Rect.cpp Rect.hpp Jeu.cpp Jeu.hpp Joueur.cpp Joueur.hpp IA.cpp IA.hpp Input.cpp Input.hpp Image.cpp Image.hpp Moteur.cpp Moteur.hpp Affichage.cpp Affichage.hpp Direction.cpp Direction.hpp params.hpp Clavier.cpp Clavier.hpp Arme.cpp Arme.hpp Sound.cpp Sound.hpp)
 
 set(CMAKE_CXX_FLAGS "-lSDL2 -lSDL2_ttf -lSDL2_image")
 

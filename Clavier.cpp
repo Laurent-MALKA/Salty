@@ -61,3 +61,13 @@ bool Clavier::isJustPressed(int scancode) const {
 bool Clavier::isJustReleased(int scancode) const {
     return previousState[scancode] && !currentState[scancode];
 }
+
+bool Clavier::isKeyboardReleased() {
+    bool out = true;
+    for (int i = 0; i < SDL_NUM_SCANCODES; ++i) {
+        if (*(currentState + i))
+            out = false;
+    }
+
+    return out;
+}
